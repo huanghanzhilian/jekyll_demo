@@ -2,41 +2,90 @@
 layout: default
 title: 我的Blog1
 ---
-<header id="header" role="banner">
-	<a id="hgroup" href="" rel="home">
-		<h1 id="logo"></h1>
-		<i class="slogan" title="返回首页">
-			热爱编程，关注前端开发技术
-		</i>
-	</a>
-	<div class="connect">
-		<a href="" class="rss"></a>
-	</div>
-	<nav id="nav">
-		<ul class="menu">
-			<li class="menu_item">
-				<a href="">首页11</a>
-			</li>
-			<li class="menu_item">
-				<a href="">关于本站</a>
-			</li>
-			<li class="menu_item">
-				<a href="">留言板</a>
-			</li>
+
+<div id="container" class="clearfix">
+	<main id="main" class="hfeed">
+		<ul>
+			{% for post in site.posts %}
+			　　<li class="entry_list">
+					<a href="{{ site.baseurl }}{{ post.url }}">
+						<h2 class="entry-title">{{ post.title }}</h2>
+						<div class="entry-meta">{{ post.date | date_to_string }}</div>
+					</a>
+				</li>
+			{% endfor %}
 		</ul>
-	</nav>
-</header>
+	</main>
+	<div class="sidebar" id="sidebar">
+		<div id="sidebar-top">
+			<aside class="widjhuh">
+				<h3 class="widget-title">最新文章</h3>
+				<ul class="minty_thumblist">
+					<li>
+						<a href="">
+							<img src="" alt="">
+							<span>哈哈哈</span>
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<img src="" alt="">
+							<span>哈哈哈</span>
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<img src="" alt="">
+							<span>哈哈哈sss </span>
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<img src="" alt="">
+							<span>哈哈哈</span>
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<img src="" alt="">
+							<span>哈哈哈</span>
+						</a>
+					</li>
+				</ul>
+			</aside>
+		</div>
+	</div>
+</div>
 <h2>{{ page.title }}</h2>
-<p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p>
-<!-- 
-<p>最新文章</p> -->
 
-<ul>
 
-{% for post in site.posts %}
-
-　　<li>{{ post.date | date_to_string }} <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
-
+<!-- 遍历分页后的文章 -->
+{% for post in paginator.posts %}
+  <h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
+  <p class="author">
+    <span class="date">{{ post.date }}</span>
+  </p>
+  <div class="content">
+    {{ post.content }}
+  </div>
 {% endfor %}
 
-</ul>
+
+<!-- 分页链接 -->
+<div class="pagination">
+  {% if paginator.previous_page %}
+    <a href="/page{{ paginator.previous_page }}" class="previous">Previous</a>
+  {% else %}
+    <span class="previous">Previous</span>
+  {% endif %}
+  <span class="page_number ">Page: {{ paginator.page }} of {{ paginator.total_pages }}</span>
+  {% if paginator.next_page %}
+    <a href="/page{{ paginator.next_page }}" class="next">Next</a>
+  {% else %}
+    <span class="next ">Next</span>
+  {% endif %}
+</div>
+
+
+<!--<p>最新文章</p> -->
+

@@ -12,7 +12,7 @@ img{border:none;}
 li{list-style:none;}
 input,select,textarea{outline:none; border: none; font-family:"微软雅黑",Helvetica,sans-serif;}
 textarea{resize:none;}
-a{text-decoration:none;}
+a{text-decoration:none; transition: color .2s; color: #666;}
 
 .fl{ float:left;}
 .fr{ float:right;}
